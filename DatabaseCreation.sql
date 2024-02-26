@@ -5,7 +5,7 @@ USE EcoInvest_DB;
 GO
 
 CREATE TABLE Company (
-    CompanyID INT PRIMARY KEY,
+    CompanyID INT PRIMARY KEY IDENTITY,
     CompanyName NVARCHAR(50) not null,
     CompanyStreet NVARCHAR(50) not null,
     CompanyCity NVARCHAR(MAX) not null,
