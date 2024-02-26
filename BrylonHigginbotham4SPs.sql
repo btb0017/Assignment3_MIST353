@@ -1,4 +1,5 @@
 USE ECOInvest_DB;
+GO
 
  Create OR ALTER PROCEDURE AddClimateAndStockData 
 
@@ -19,6 +20,13 @@ BEGIN
     SELECT @CompanyID = CompanyID 
 	FROM Company 
 
+	IF NOT EXISTS (SELECT 1 FROM Date WHERE DateValue = @DateValue)
+    BEGIN
+        INSERT INTO Date (DateValue) VALUES (@DateValue);
+    END
+
+    SELECT @DateID = DateID FROM Date WHERE DateValue = @DateValue;
+
     INSERT INTO ClimateData (CompanyID, DateID, Temperature, Humidity, CO2Levels)
     VALUES (@CompanyID, @DateID, @Temperature, @Humidity, @CO2Levels)
 
@@ -28,3 +36,17 @@ BEGIN
 
   END;
   GO
+  /*
+  EXEC AddClimateAndStockData
+	@CompanyID = 1,
+    @DateValue = "2023-01-20",
+    @Temperature = 79.44,
+    @Humidity = 54.02,
+    @CO2Levels = 405,
+    @OpeningPrice = 120.06,
+    @ClosingPrice = 115.22,
+    @High = 125.57,
+    @Low = 102.94,
+    @Volume = 6000;
+GO
+*/
