@@ -1,6 +1,6 @@
 USE EcoInvest_DB;
 GO
-/* Stored Procedure #1: Get all details for a company by companyID. Used to generate data for a company’s detailed information page.*/
+/* Stored Procedure #1: Get all details for a company by companyID. Used to generate data for a companyâ€™s detailed information page.*/
 CREATE OR ALTER PROCEDURE spCompanyDetails
 	@CompanyID int
 	AS
@@ -22,12 +22,12 @@ CREATE OR ALTER PROCEDURE spCompanyAdd
 	@CompanyCity nvarchar(MAX),
 	@CompanyState nvarchar(MAX),
 	@CompanyCountry nvarchar(50),
-	@CompanyZip nvarchar(10),
-	@CompanyEmail nvarchar(MAX),
-	@CompanyLatitude nvarchar(MAX),
-	@CompanyLongitude nvarchar(MAX),
-	@CompanyWebsite nvarchar(MAX),
-	@CompanyClimateRating int
+	@CompanyZip nvarchar(10) = null,
+	@CompanyEmail nvarchar(MAX) = null,
+	@CompanyLatitude nvarchar(MAX) = null,
+	@CompanyLongitude nvarchar(MAX) = null,
+	@CompanyWebsite nvarchar(MAX) = null,
+	@CompanyClimateRating int = null
 		AS
 		BEGIN
 		INSERT INTO Company(CompanyID, CompanyName, CompanyStreet, CompanyCity, CompanyState, CompanyCountry, 
@@ -35,4 +35,5 @@ CREATE OR ALTER PROCEDURE spCompanyAdd
 		VALUES (@CompanyID, @CompanyName, @CompanyStreet, @CompanyCity, @CompanyState, @CompanyCountry, 
 			@CompanyZip, @CompanyEmail, @CompanyLatitude, @CompanyLongitude , @CompanyWebsite , @CompanyClimateRating);
 		END;
+		GO
 /* EXEC spCompanyAdd */
