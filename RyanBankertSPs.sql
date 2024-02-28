@@ -4,10 +4,10 @@ GO
 CREATE OR ALTER PROCEDURE spCompanyDetails
 	@CompanyID int
 	AS
-	BEGIN
+BEGIN
 		SELECT * FROM Company WHERE CompanyID = @CompanyID;
-	END;
-	GO
+END;
+GO
 /*
 EXEC spCompanyDetails 
     @CompanyID = 1, 
@@ -15,6 +15,7 @@ GO
 */
 
 /* Stored Procedure #2: Add a company. Used to add company details to track information.*/
+USE EcoInvest_DB;
 CREATE OR ALTER PROCEDURE spCompanyAdd
 	@CompanyID int,
 	@CompanyName nvarchar(50),
@@ -33,9 +34,9 @@ CREATE OR ALTER PROCEDURE spCompanyAdd
 		INSERT INTO Company(CompanyID, CompanyName, CompanyStreet, CompanyCity, CompanyState, CompanyCountry, 
 			CompanyZip, CompanyEmail, CompanyLatitude,CompanyLongitude,CompanyWebsite, CompanyClimateRating) 
 		VALUES (@CompanyID, @CompanyName, @CompanyStreet, @CompanyCity, @CompanyState, @CompanyCountry, 
-			@CompanyZip, @CompanyEmail, @CompanyLatitude, @CompanyLongitude , @CompanyWebsite , @CompanyClimateRating);
-		END;
-		GO
+			@CompanyZip, @CompanyEmail, @CompanyLatitude, @CompanyLongitude, @CompanyWebsite, @CompanyClimateRating);
+END;
+GO
 /* EXEC spCompanyAdd
 	@CompanyID = 1,
 	@CompanyName ="EcoTech", 
