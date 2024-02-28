@@ -36,4 +36,18 @@ CREATE OR ALTER PROCEDURE spCompanyAdd
 			@CompanyZip, @CompanyEmail, @CompanyLatitude, @CompanyLongitude , @CompanyWebsite , @CompanyClimateRating);
 		END;
 		GO
-/* EXEC spCompanyAdd */
+/* EXEC spCompanyAdd
+	@CompanyID = 1,
+	@CompanyName ="EcoTech", 
+	@CompanyStreet ="123 Green Way", 
+	@CompanyCity="EcoCity", 
+	@CompanyState="EC", 
+	@CompanyCountry="Utopia", 
+	@CompanyZip="12345", 
+	@CompanyEmail="contact@ecotech.com", 
+	@CompanyLatitude="47.6062", 
+	@CompanyLongitude ="-122.3321", 
+	@CompanyWebsite="http://www.ecotech.com",
+	@CompanyClimateRating = 8;
+GO
+*/
